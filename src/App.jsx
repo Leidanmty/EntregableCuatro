@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
+import UsersForm from './Components/UsersForm'
 
 function App() {
   const [users, setUsers] = useState({});
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      
+      <UsersForm />
     </div>
   )
 }
