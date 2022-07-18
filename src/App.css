@@ -28,6 +28,7 @@ body {
   width: 350px;
   height: 450px;
   box-shadow: .1rem .1rem .6rem;
+  border-radius: 15px;
 }
 
 .userForm>h1 {
@@ -36,7 +37,8 @@ body {
   padding-top: 50px;
   color: white;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .input-container {
@@ -68,6 +70,7 @@ body {
 
 button:hover {
   background-color: gray;
+  cursor: pointer;
 }
 
 /* ----------- La siguiente informacion edita los conteneores donde viene la información del usuario ----------------*/

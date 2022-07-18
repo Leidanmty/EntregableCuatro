@@ -20,17 +20,22 @@ function App() {
     setUserSelected(user);
   };
 
+  const deselectUser = () => setUserSelected(null)
+
   const getUsers = () => {
     axios
       .get("https://users-crud1.herokuapp.com/users/")
       .then((res) => setUsers(res.data));
   };
 
+
+
   return (
     <div className="App">
       <UsersForm 
       getUsers={getUsers}
       userSelected={userSelected}
+      deselectUser={deselectUser}
       />
       <br />
       <UsersList 

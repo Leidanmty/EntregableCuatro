@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const UsersForm = ({ userSelected, getUsers }) => {
+const UsersForm = ({ userSelected, getUsers, deselectUser }) => {
 
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -40,19 +40,32 @@ const UsersForm = ({ userSelected, getUsers }) => {
                 )
                 .then(() => {
                     getUsers();
-                    //reset();
-                    //deselectMovie();
+                    reset();
+                    deselectUser();
                 });
         } else {
             axios
                 .post("https://users-crud1.herokuapp.com/users/", userForm)
                 .then(() => {
                     getUsers();
-                    //reset();
+                    reset();
                 })
                 .catch((error) => console.log(error.response));
         }
     };
+
+    const reset = () => {
+        setName("");
+        setLastName("");
+        setEmail("");
+        setPassword("");
+        setBirthday("");
+    }
+
+    const clear = () => {
+        reset()
+        deselectUser()
+    }
 
     return (
         <form className="userForm" onSubmit={submit}>
