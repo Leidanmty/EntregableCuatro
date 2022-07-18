@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const UsersForm = ({ userSelected }) => {
+const UsersForm = ({ userSelected, getUsers }) => {
 
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -39,23 +39,23 @@ const UsersForm = ({ userSelected }) => {
                     userForm
                 )
                 .then(() => {
-                    getMovies();
-                    reset();
-                    deselectMovie();
+                    getUsers();
+                    //reset();
+                    //deselectMovie();
                 });
         } else {
             axios
                 .post("https://users-crud1.herokuapp.com/users/", userForm)
                 .then(() => {
-                    getMovies();
-                    reset();
+                    getUsers();
+                    //reset();
                 })
                 .catch((error) => console.log(error.response));
         }
     };
 
     return (
-        <form className="userForm">
+        <form className="userForm" onSubmit={submit}>
             <h1>Users Form </h1>
 
             <div className="input-container">
@@ -63,8 +63,8 @@ const UsersForm = ({ userSelected }) => {
                 <input
                     type="email"
                     id="email"
-                //value={name}
-                //onChange={(e) => setName(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
             </div>
 
@@ -73,8 +73,8 @@ const UsersForm = ({ userSelected }) => {
                 <input
                     type="password"
                     id="password"
-                //value={name}
-                //onChange={(e) => setName(e.target.value)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
 
@@ -83,18 +83,18 @@ const UsersForm = ({ userSelected }) => {
                 <input
                     type="text"
                     id="name"
-                //value={name}
-                //onChange={(e) => setName(e.target.value)}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                 />
             </div>
 
             <div className="input-container">
-                <label htmlFor="lastname">Last name:</label>
+                <label htmlFor="lastName">Last name:</label>
                 <input
                     type="text"
-                    id="lastname"
-                //value={name}
-                //onChange={(e) => setName(e.target.value)}
+                    id="lastName"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                 />
             </div>
 
@@ -103,8 +103,8 @@ const UsersForm = ({ userSelected }) => {
                 <input
                     type="date"
                     id="date"
-                //value={name}
-                //onChange={(e) => setName(e.target.value)}
+                    value={birthday}
+                    onChange={(e) => setBirthday(e.target.value)}
                 />
             </div>
 

@@ -1,7 +1,14 @@
 import React from "react";
 import axios from "axios";
 
-const UsersList = ({ users, selectUser }) => {
+const UsersList = ({ users, selectUser, getUsers }) => {
+
+    const deleteUser = (id) => {
+        alert('Eliminando');
+        axios
+            .delete(`https://users-crud1.herokuapp.com/users/${id}/`)
+            .then(() => getUsers());
+    };
 
     return (
         <ul>
@@ -17,7 +24,7 @@ const UsersList = ({ users, selectUser }) => {
                     </div>
 
                     <button onClick={() => selectUser(user)}>Edit</button>
-                    <button /*onClick={() => deleteMovie(movie.id)}*/>Delete</button>
+                    <button onClick={() => deleteUser(user.id)}>Delete</button>
                 </li>
             ))}
         </ul>

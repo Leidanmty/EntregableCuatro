@@ -16,7 +16,7 @@ function App() {
   console.log(users);
 
   const selectUser = (user) => {
-    alert('Seleccionaste este target')
+    alert('Seleccionaste un Usuario')
     setUserSelected(user);
   };
 
@@ -29,12 +29,14 @@ function App() {
   return (
     <div className="App">
       <UsersForm 
+      getUsers={getUsers}
       userSelected={userSelected}
       />
       <br />
       <UsersList 
       users={users}
       selectUser={selectUser}
+      getUsers={getUsers}
       />
     </div>
   )
