@@ -1,22 +1,22 @@
 import React from "react";
 import axios from "axios";
 
-const UsersList = ({ users }) => {
+const UsersList = ({ users, selectUser }) => {
 
     return (
         <ul>
             <h1>Users List</h1>
-            {users.map((users) => (
-                <li>
-                    <h3>{users.first_name} {users.last_name}</h3>
+            {users.map((user) => (
+                <li key={user.id}>
+                    <h3>{user.first_name} {user.last_name}</h3>
                     <div>
-                        <p>{users.email}</p>
+                        <b>E-mail: </b> {user.email}
                     </div>
                     <div>
-                        <p>{users.birthday}</p>
+                        <b>Birthday</b> {user.birthday}
                     </div>
 
-                    <button /*onClick={() => selectMovie(movie)}*/>Edit</button>
+                    <button onClick={() => selectUser(user)}>Edit</button>
                     <button /*onClick={() => deleteMovie(movie.id)}*/>Delete</button>
                 </li>
             ))}
